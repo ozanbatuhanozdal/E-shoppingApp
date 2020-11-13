@@ -1,0 +1,79 @@
+<!-- <div *ngIf="member" class="container login-container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>User Profile</h3>
+            <div class="alert alert-info" *ngIf="editForm.dirty"><strong> Information:</strong> You have made changes. Any unsaved changes will be lost..</div>
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()" autocomplete="off">
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input name="email" type="email" [(ngModel)]="member.email" class="form-control" id="email" aria-describedby="emailHelp">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input name="password" type="password" [(ngModel)]="member.password" class="form-control" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Firstname</label>
+                    <input name="firstname" type="text" [(ngModel)]="member.firstname" class="form-control" id="firstname">
+                  </div>
+                  <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input name="surname" type="text" [(ngModel)]="member.surname" class="form-control" id="surname">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">username</label>
+                    <input name="username" type="text" [(ngModel)]="member.username" class="form-control" id="username">
+                  </div>
+                  <div class="form-group">
+                    <label for="address">address</label>
+                    <input name="address" type="text" [(ngModel)]="member.address" class="form-control" id="address">
+                  </div>
+              
+                <button [disabled]="!editForm.dirty" type="submit" class="btn btn-success">Save Changes</button>
+              </form>
+        </div>
+      
+    </div>
+</div> -->
+
+<div *ngIf="member" class="container login-container" >
+  <h3>User Profile</h3>
+  <div class="alert alert-info" *ngIf="editForm.dirty"><strong> Information:</strong> You have made changes. Any unsaved changes will be lost..</div>
+  <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()" autocomplete="off">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email address</label>
+      <input name="email" type="email" [(ngModel)]="member.email" class="form-control" id="email" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="password">Password</label>
+      <input name="password" type="password" [(ngModel)]="member.password" class="form-control" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="exampleInputPassword1">Firstname</label>
+      <input name="firstname" type="text" [(ngModel)]="member.firstname" class="form-control" id="firstname">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="surname">Surname</label>
+      <input name="surname" type="text" [(ngModel)]="member.surname" class="form-control" id="surname">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="username">username</label>
+      <input name="username" type="text" [(ngModel)]="member.username" class="form-control" id="username">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="address">address</label>
+      <input name="address" type="text" [(ngModel)]="member.address" class="form-control" id="address">
+    </div>
+  </div>
+ 
+ 
+  <button [disabled]="!editForm.dirty" type="submit" class="btn btn-success">Save Changes</button>
+</form>
+</div>

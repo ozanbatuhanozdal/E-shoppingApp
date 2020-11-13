@@ -1,0 +1,36 @@
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Register Form</h3>
+            <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+                <div class="form-group">
+                    <input [(ngModel)]="model.username" name="username" type="text" class="form-control" placeholder="username"  />
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="model.email" name="email" type="email" class="form-control" placeholder="Your Email"  />
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="model.password" name="password" type="password" class="form-control" placeholder="Your Password"  />
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="model.firstname" name="firstname" type="text" class="form-control" placeholder="Firstname"  />
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="model.surname" name="surname" type="text" class="form-control" placeholder="Surname"  />
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="model.address" name="address" type="textarea" class="form-control" placeholder="Address" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Register" />
+                </div>
+               
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd" routerLink='login'>Sign In</a>
+                </div>
+            </form>
+        </div>
+      
+    </div>
+</div>

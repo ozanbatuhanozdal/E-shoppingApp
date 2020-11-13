@@ -1,0 +1,53 @@
+<div  class="container login-container" >
+    <br>
+    <br>        
+    
+        <p>
+            <a class="btn btn-success btn-sm" routerLink="Create">
+                <i class="fas fa-plus">
+                </i>
+                Add
+            </a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                   Category Name
+                </th>
+                <th>
+                   Category Order
+                </th>
+                
+                <th></th>
+            </tr>
+    
+                
+                <tr *ngFor="let category of categories">
+                    <td>
+                      {{category.categoryName}}
+                    </td>
+                    <td>
+                       {{category.orderCategory}}
+                    </td>
+                    
+                  
+              
+                    <td>
+                       
+                        <a class="btn btn-info btn-sm" routerLink='Edit/{{category.categoryId}}'>
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                           Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" (click)="deleteCategory(category.categoryId)">
+                            <i class="fas fa-trash">
+                            </i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            
+    
+        </table>
+    
+    </div>

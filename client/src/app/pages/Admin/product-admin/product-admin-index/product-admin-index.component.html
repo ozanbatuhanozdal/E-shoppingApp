@@ -1,0 +1,58 @@
+<div  class="container login-container" >
+    <br>
+    <br>        
+    
+        <p>
+            <a class="btn btn-success btn-sm" routerLink="Create" href="#">
+                <i class="fas fa-plus">
+                </i>
+                Add
+            </a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                   Product Name
+                </th>
+                <th>
+                   Product Price
+                </th>
+                <th>
+                   Product Category
+                </th>
+              
+                <th></th>
+            </tr>
+    
+                
+                <tr *ngFor="let product of Products">
+                    <td>
+                      {{product.productName}}
+                    </td>
+                    <td>
+                       {{product.productPrice}}
+                    </td>
+                    <td>
+                       {{product.category.categoryName}}
+                    </td>
+                  
+              
+                    <td>
+                       
+                        <a class="btn btn-info btn-sm" routerLink='Edit/{{product.productId}}'>
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                           Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" (click)="deleteProduct(product.productId)">
+                            <i class="fas fa-trash">
+                            </i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            
+    
+        </table>
+    
+    </div>

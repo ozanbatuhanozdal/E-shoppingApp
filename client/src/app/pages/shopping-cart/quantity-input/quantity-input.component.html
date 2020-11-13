@@ -1,0 +1,9 @@
+<td class="align-middle border-0">
+    <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
+      <div class="quantity">
+        <button class="dec-btn p-0" [disabled]="value === 1" (click)="onMinus()" ><i class="fas fa-caret-left" ></i></button>
+        <input #q_input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" [value]="value" (keyup)="onChanged(q_input.value)"  />
+        <button class="inc-btn p-0" (click)="onPlus()"><i class="fas fa-caret-right"></i></button>
+      </div>
+    </div>
+  </td>

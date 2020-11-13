@@ -1,0 +1,44 @@
+
+<div  class="container login-container" >
+    <h3>Add Product</h3>
+    <form #addProductForm="ngForm" id="addProductForm" (ngSubmit)="addProduct(file.files)" autocomplete="off">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="productName">Product Name</label>
+        <input name="productName" type="text" [(ngModel)]="model.productName" class="form-control" id="productName"  placeholder="Product Name">
+       
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ProductPrice">Product Price</label>
+        <input name="ProductPrice" type="number" [(ngModel)]="model.productPrice" class="form-control" id="ProductPrice" placeholder="Product Price">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="ProductExplanation">Product Explanation</label>
+        <input name="ProductExplanation" type="text" [(ngModel)]="model.productExplanation" class="form-control" id="firstname" placeholder="Product Explanation">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Category">Product Category</label>
+        <select 
+            name="Category" 
+            id="Category" 
+            class="form-control"
+            [(ngModel)]="model.categoryId">
+            <option *ngFor="let category of categories" [selected]="category.categoryId == 1" [value]="category.categoryId">{{ category.categoryName }}</option>
+        </select>
+    </div>
+
+    </div>
+    <div class="form-group col-md-6">
+        <label for="productImageUrl">Product Image Url</label>
+        <input #file name="productImageUrl" type="file" [(ngModel)]="model.productImageUrl"  class="form-control" id="productName"  placeholder="Product Image Url">       
+      </div>
+   
+   
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Add Product" />
+    </div>
+  </form>
+  </div>
