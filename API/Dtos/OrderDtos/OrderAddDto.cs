@@ -13,5 +13,6 @@ namespace API.Dtos.OrderDtos
         public string CustomerEmail { get; set; }
         public string CustomerAdress { get; set; }
         public int TotalPrice { get; set; }
+        public int UserId { get; set; }
     }
 }

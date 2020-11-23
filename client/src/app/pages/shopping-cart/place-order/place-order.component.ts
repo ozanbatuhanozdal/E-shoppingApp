@@ -26,6 +26,7 @@ export class PlaceOrderComponent implements OnInit {
     this.model.CustomerName = JSON.parse(localStorage.getItem('user')).firstname
     this.model.CustomerEmail = JSON.parse(localStorage.getItem('user')).email
     this.model.CustomerAdress = JSON.parse(localStorage.getItem('user')).adress
+    this.model.UserId = JSON.parse(localStorage.getItem('user')).userId
     this.model.TotalPrice = this.sumPrice
 
     this.orderService.PlaceOrder(this.model).subscribe(response => {

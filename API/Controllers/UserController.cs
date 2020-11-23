@@ -50,6 +50,7 @@ namespace API.Controllers
             userDto.Firstname = addUser.Firstname;
             userDto.UserId = addUser.UserId;
             userDto.IsAdmin = addUser.IsAdmin;
+            userDto.Adress = addUser.Address;
             userDto.Token = _tokenService.CreateToken(addUser);
 
             return Ok(addUser);
@@ -130,8 +131,6 @@ namespace API.Controllers
             
             return Ok(User);
             
-
-
         }
 
 

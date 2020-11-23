@@ -1,0 +1,48 @@
+<div class="container">
+    <!-- HERO SECTION-->
+    <section class="py-5 bg-light">
+      <div class="container">
+      </div>
+    </section>
+    <section class="py-5">
+      <h2 class="h5 text-uppercase mb-4">Orders List</h2>
+      <div class="row">
+        <div  class="col-lg-8 mb-4 mb-lg-0">
+          <!-- USER TABLE-->
+          <div class="table-responsive mb-4">
+            <table class="table">
+              <thead class="bg-light">
+                <tr>
+                  <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Customer Name</strong></th>
+                  <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Customer Address</strong></th>
+                  <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Customer Email</strong></th>
+                  <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Order Date</strong></th>
+                  <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Total Price</strong></th>                  
+                  <th class="border-0" scope="col"> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders;let i = index">
+                    <td class="align-middle border-0">
+                        <p class="mb-0 small">{{order.customerName}}</p>
+                      </td>
+                  <td class="align-middle border-0">
+                    <p class="mb-0 small">{{order.customerAdress}}</p>
+                  </td>
+                  <td class="align-middle border-0">
+                    <p class="mb-0 small">{{order.customerEmail}}</p>
+                  </td>
+                  <td class="align-middle border-0">
+                    <p class="mb-0 small">{{order.orderDate}}</p>
+                  </td>
+                  <td class="align-middle border-0">
+                    <p class="mb-0 small">{{order.totalPrice}} $</p>
+                  </td>                  
+                  </tr>              
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </div>
+    </section>
+  </div>

@@ -35,6 +35,9 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { QuantityInputComponent } from './pages/shopping-cart/quantity-input/quantity-input.component';
 import { PlaceOrderComponent } from './pages/shopping-cart/place-order/place-order.component';
 import { DatePipe } from '@angular/common';
+import { UsersAdminComponent } from './pages/Admin/users-admin/users-admin.component';
+import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.component';
+import { UserOrderComponent } from './pages/user-order/user-order.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { DatePipe } from '@angular/common';
     ShoppingCartComponent,
     QuantityInputComponent,
     PlaceOrderComponent,
+    UsersAdminComponent,
+    OrderAdminComponent,
+    UserOrderComponent,
   ],
   imports: [
     BrowserModule,

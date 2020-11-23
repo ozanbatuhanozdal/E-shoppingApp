@@ -10,18 +10,18 @@
             <li class="nav-item">
               <!-- Link--><a class="nav-link" routerLink='/shop' routerLinkActive='active'>Shop</a>
             </li>
-        
-            <li  class ="nav-item dropdown" *ngIf="(authService.currentUser$ | async) as user" ><a class="nav-link dropdown-toggle"  id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Panel</a>
-              <div *ngIf="user.isAdmin == 1"  class="dropdown-menu mt-3"  aria-labelledby="pagesDropdown" >
+            <div *ngIf="(authService.currentUser$ | async) as user">
+            <li  class ="nav-item dropdown"*ngIf="user.isAdmin == 1"  ><a class="nav-link dropdown-toggle"  id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Panel</a>
+              <div   class="dropdown-menu mt-3"  aria-labelledby="pagesDropdown" >
                 <a class="dropdown-item border-0 transition-link" routerLink='/Admin/Product'>Product</a>
                 <a class="dropdown-item border-0 transition-link" href="/Admin/Category">Category</a>
                 <a class="dropdown-item border-0 transition-link" href="/Admin/Order">Orders</a>
-                <a class="dropdown-item border-0 transition-link" href="cart.html">Users</a>       </div>         
+                <a class="dropdown-item border-0 transition-link" href="/Admin/User">Users</a>       </div>         
             </li>
-         
+          </div>
           </ul>
           <ul class="navbar-nav ml-auto">               
-            <li class="nav-item"><a class="nav-link" href="/shopping-cart"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-dark">(2)</small></a></li>           
+            <li class="nav-item"><a class="nav-link" href="/shopping-cart"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-dark"></small></a></li>           
           </ul>
           <div class="dropdown" *ngIf="(authService.currentUser$ | async) === null"  dropdown>
             <a  class="dropdown-toggle text-dark" dropdownToggle>Login</a>
@@ -37,7 +37,7 @@
             <div class="dropdown-menu mt-2" *dropdownMenu>
               <a  class="dropdown-item" routerLink='/UserProfile/{{user.userId}}'>Edit Profile</a>
               <div class="dropdown-divider"></div>
-              <a  class="dropdown-item" *ngIf="user.isAdmin == 1" routerLink='/UserProfile/{{user.userId}}'>Admin Panel</a>
+              <a  class="dropdown-item" routerLink='/UserOrder/{{user.userId}}'>My Orders</a>
               <div class="dropdown-divider"></div>
               <a  class="dropdown-item" (click)="logout()">Logout</a>
             </div>

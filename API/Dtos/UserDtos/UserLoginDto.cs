@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace API.Dtos.UserDtos
 {
     public class UserLoginDto
-    {
+    {        
         [Required, EmailAddress]
         public string Email { get; set; }
         [Required]

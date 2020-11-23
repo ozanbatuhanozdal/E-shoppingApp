@@ -23,6 +23,16 @@ namespace API.Controllers
             _mapper = mapper;
 
         }
+
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAll()
+        {
+            var orders = await _orderRepository.GetAllASync();
+
+            return Ok(orders);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PlaceOrder(OrderAddDto orderAddDto)
         {
@@ -35,6 +45,14 @@ namespace API.Controllers
             {
                 return BadRequest("Purchase Failed");
             }
+        }
+
+        [HttpGet("{id}")]
+        public async  Task<IActionResult> GetAll(int id)
+        {
+            var order =  await _orderRepository.GetAllASync(x=> x.UserId == id);
+
+            return Ok(order);
         }
     }
 }

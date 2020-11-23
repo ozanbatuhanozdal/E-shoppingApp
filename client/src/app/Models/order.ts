@@ -1,9 +1,9 @@
 export interface Order {
-    OrderID: number;
-    OrderDate:string
-    CustomerName: string;
-    CustomerEmail:string;
-    CustomerAdress:string;
-    TotalPrice: number
-
+    orderID: number;
+    orderDate:string
+    customerName: string;
+    customerEmail:string;
+    customerAdress:string;
+    totalPrice: number
+    userId:number;
 }

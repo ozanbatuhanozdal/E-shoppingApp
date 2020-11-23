@@ -7,6 +7,7 @@ namespace API.Models
     public class Order
     {
         public int OrderID { get; set; }
+        public int UserId { get; set; }
         public string OrderDate { get; set; }
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }

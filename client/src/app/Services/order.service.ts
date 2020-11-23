@@ -22,4 +22,16 @@ export class OrderService {
             })
         )
     }
+
+
+    getOrder()
+    {
+        return this.http.get<Order[]>(this.baseUrl + 'Order/GetAll');
+    }
+
+    getUserOrder(id:string)
+    { 
+        console.log(id);
+        return this.http.get<Order[]>(this.baseUrl + 'Order/' +  id)
+    }
 }

@@ -15,12 +15,15 @@ import { CategoryAdminCreateComponent } from './pages/Admin/category-admin/categ
 import { CategoryAdminEditComponent } from './pages/Admin/category-admin/category-admin-edit/category-admin-edit.component';
 import { CategoryAdminIndexComponent } from './pages/Admin/category-admin/category-admin-index/category-admin-index.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-
+import {UsersAdminComponent} from './pages/Admin/users-admin/users-admin.component';
+import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.component';
+import { UserOrderComponent } from './pages/user-order/user-order.component';
 
 const routes: Routes = [
   
   { path:'',component: HomeComponent },
   { path:'UserProfile/:id', component:UserProfileComponent ,canActivate: [AuthGuard], canDeactivate:[PreventUnsavedChangesGuard]},
+  { path:'UserOrder/:id' , component: UserOrderComponent, canActivate: [AuthGuard]},
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'register' , component:RegisterComponent},
   { path:'shopping-cart', component:ShoppingCartComponent},
@@ -38,7 +41,12 @@ const routes: Routes = [
   { path:'Admin/Category/Edit/:id', component:CategoryAdminEditComponent},
   { path:'Admin/Category/Create', component:CategoryAdminCreateComponent},
   
-  
+  // Admin Users
+  { path:'Admin/User', component:UsersAdminComponent},
+
+  // Admin Order
+  { path:'Admin/Order' , component: OrderAdminComponent},
+
   { path: '**' , component:HomeComponent, pathMatch: 'full'}
   
 ];
