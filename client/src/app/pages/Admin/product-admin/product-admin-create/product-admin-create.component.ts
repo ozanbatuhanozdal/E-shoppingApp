@@ -32,6 +32,10 @@ export class ProductAdminCreateComponent implements OnInit {
     console.log(file.path)
     this.model.productImageUrl=file.name
     }
+    if(this.model.productImageUrl == null)
+    {
+      this.model.productImageUrl="productempty.jpg"
+    }
 
     this.productService.addProduct(this.model).subscribe(response => {
       console.log(response);

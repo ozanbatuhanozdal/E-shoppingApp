@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
 
   model:any = {};
-
+  public barLabel: string = "Password strength:";  
   constructor(private http:HttpClient,private authService:AuthService,private router:Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -21,13 +21,20 @@ export class RegisterComponent implements OnInit {
 
   register()
   {
-    this.authService.register(this.model).subscribe(response => {
-      console.log(response);
-      this.router.navigateByUrl('/');
-    },error => {
-      console.log(error);
-      this.toastr.error(error.error);
-    })
-  }
+    if(this.model.password ==this.model.checkpassword)
+    {
 
+      this.authService.register(this.model).subscribe(response => {
+        console.log(response);
+        this.router.navigateByUrl('/');
+      },error => {
+        console.log(error);
+        this.toastr.error(error.error);
+      })
+    }
+    else{
+      this.toastr.error('Password And Check Password is not same')
+    }
+  }
+    
 }

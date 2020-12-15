@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FW5Akx0L/Lv6Op5Kq4TmG/rAHVsgwFSUwINNL2GE/IvKCq2ymtrCM5sshbU5kdvtH/ZSX4OetAC3ADVSmHGd2Q==",
+  "dgSpecHash": "56UyaZm3JiEzwKKhUnUDRNRnrZI5RZY3VSCw/t8MYXlsI5g4vm8AuvvFhxev18iogVIw8vMegfBD9zO4TISxfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ozanb\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\ozanb\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

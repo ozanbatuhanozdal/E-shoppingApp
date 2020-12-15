@@ -38,6 +38,7 @@ import { DatePipe } from '@angular/common';
 import { UsersAdminComponent } from './pages/Admin/users-admin/users-admin.component';
 import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.component';
 import { UserOrderComponent } from './pages/user-order/user-order.component';
+import { StrengthPasswordComponent } from './pages/register/strength-password/strength-password.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { UserOrderComponent } from './pages/user-order/user-order.component';
     UsersAdminComponent,
     OrderAdminComponent,
     UserOrderComponent,
+    StrengthPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\API.csproj": {}
+    "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\API.csproj": {
+    "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\API.csproj",
+        "projectPath": "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\API.csproj",
         "packagesPath": "C:\\Users\\ozanb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ozanb\\Desktop\\new\\YZM-4215---GRUP17-master\\API\\obj\\",
+        "outputPath": "C:\\Users\\ozanb\\Desktop\\YZM-4215---GRUP17\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ozanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
