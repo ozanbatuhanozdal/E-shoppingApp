@@ -23,18 +23,16 @@ export class RegisterComponent implements OnInit {
   {
     if(this.model.password ==this.model.checkpassword)
     {
-
       this.authService.register(this.model).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl('/');
       },error => {
         console.log(error);
-        this.toastr.error(error.error);
+        this.toastr.error("Register Failed, Check Your Inputs");
       })
     }
     else{
       this.toastr.error('Password And Check Password is not same')
     }
   }
-    
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/Services/category.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-category-admin-create',
   templateUrl: './category-admin-create.component.html',
@@ -10,7 +10,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 export class CategoryAdminCreateComponent implements OnInit {
 
   model:any = {};
-  constructor(private categoryService: CategoryService,private route:Router) { }
+  constructor(private categoryService: CategoryService,private toastr : ToastrService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -19,8 +19,14 @@ export class CategoryAdminCreateComponent implements OnInit {
   {
     this.categoryService.addCategory(this.model).subscribe(response => {
       console.log(response);
-      this.route.navigateByUrl('/');
-    })    
+      this.toastr.success("Category Added");
+      setTimeout(function () {
+        window.location.reload()
+      }.bind(this), 2000);
+    },error => { 
+      console.log(error);
+      this.toastr.error(error.error);
+    })
   }
 
 }

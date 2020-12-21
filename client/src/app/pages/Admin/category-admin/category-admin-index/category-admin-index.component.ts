@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { CategoryService } from 'src/app/Services/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category-admin-index',
@@ -17,7 +18,7 @@ export class CategoryAdminIndexComponent implements OnInit {
   Products: Product[];
   categories: Category[];
  
-  constructor(private http: HttpClient,private productService: ProductService,private categoryService:CategoryService,private router:Router) { }
+  constructor(private toastr : ToastrService,private http: HttpClient,private productService: ProductService,private categoryService:CategoryService,private router:Router) { }
   
   ngOnInit() {
 
@@ -48,9 +49,13 @@ export class CategoryAdminIndexComponent implements OnInit {
   {
     this.categoryService.deleteCategory(id).subscribe(response => {
       console.log(response);
-      this.router.navigateByUrl('/Category');
+      this.toastr.success("Category Removed");
+      setTimeout(function () {
+        window.location.reload()
+      }.bind(this), 2000);
     },error => { 
       console.log(error);
+      this.toastr.error(error.error);
     })
   }
 

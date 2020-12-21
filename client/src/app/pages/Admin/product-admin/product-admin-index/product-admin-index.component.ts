@@ -17,26 +17,22 @@ export class ProductAdminIndexComponent implements OnInit {
 
   Products: Product[];
   Categories: Category[];
-  constructor(private http: HttpClient,private productService: ProductService,private router:Router,private toastr: ToastrService,private categoryService:CategoryService) { }
+  constructor(private http: HttpClient, private productService: ProductService, private router: Router, private toastr: ToastrService, private categoryService: CategoryService) { }
 
   ngOnInit() {
 
     this.getProducts();
     this.getCategories();
     this.test();
-  
-  }
-   i:number
-   j:number
 
-  test()
-  {
-    for(this.i = 0 ;this.i <this.Products.length;this.i++)
-    {
-      for(this.j = 0;this.j<this.Categories.length;this.i++)
-      {
-        if(this.Products[this.i].categoryId == this.Categories[this.j].categoryId)
-        {
+  }
+  i: number
+  j: number
+
+  test() {
+    for (this.i = 0; this.i < this.Products.length; this.i++) {
+      for (this.j = 0; this.j < this.Categories.length; this.i++) {
+        if (this.Products[this.i].categoryId == this.Categories[this.j].categoryId) {
           this.Products[this.i].category = this.Categories[this.j]
         }
 
@@ -47,32 +43,32 @@ export class ProductAdminIndexComponent implements OnInit {
 
 
 
-  getProducts()
-  {   
-    this.productService.getProducts().subscribe( products => {
+  getProducts() {
+    this.productService.getProducts().subscribe(products => {
       console.log(products);
       this.Products = products;
-      
+
     })
 
   }
 
-  getCategories()
-  {
-      this.categoryService.getCategories().subscribe( categorys => {
-        console.log(categorys);
-        this.Categories = categorys;                
-      })
- 
-  }
-  
+  getCategories() {
+    this.categoryService.getCategories().subscribe(categorys => {
+      console.log(categorys);
+      this.Categories = categorys;
+    })
 
-  deleteProduct(id:number)
-  {
+  }
+
+
+  deleteProduct(id: number) {
     this.productService.deleteProduct(id).subscribe(response => {
       console.log(response);
-      this.router.navigateByUrl('Product');
-    },error => {
+      this.toastr.success("Product Removed");
+      setTimeout(function () {
+        window.location.reload()
+      }.bind(this), 2000);
+    }, error => {
       console.log(error);
       this.toastr.error(error.error);
     })

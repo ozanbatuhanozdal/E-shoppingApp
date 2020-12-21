@@ -29,7 +29,7 @@ export class LoginComponent  {
 
     }, error => {
       console.log(error);
-      this.toastr.error(error.error);
+      this.toastr.error('Login Failed');
     })
   }
 

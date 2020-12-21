@@ -40,7 +40,10 @@ export class ProductAdminCreateComponent implements OnInit {
     this.productService.addProduct(this.model).subscribe(response => {
       console.log(response);
       this.upload(files);
-      this.router.navigateByUrl('/');
+      this.toastr.success("Product Added");
+      setTimeout(function () {
+      this.router.navigateByUrl('/Admin/Product');
+      }.bind(this), 2000);
     },error => {
       console.log(error);
       this.toastr.error(error.error);

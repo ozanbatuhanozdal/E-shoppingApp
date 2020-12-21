@@ -10,7 +10,7 @@
                 </div>
                 <div class="form-group">
                     Email
-                    <input [(ngModel)]="model.email" name="email" type="email" class="form-control" placeholder="Your Email"  />
+                    <input [(ngModel)]="model.email" name="email" type="email" class="form-control" placeholder="Your Email" ngModel email="true" />
                 </div>
                 <div class="form-group">
                     Password
@@ -39,7 +39,7 @@
                 </div>
                
                 <div class="form-group">
-                    <a href="#" class="ForgetPwd" routerLink='login'>Sign In</a>
+                    <a class="ForgetPwd" routerLink='/login'>Sign In</a>
                 </div>
             </form>
         </div>
