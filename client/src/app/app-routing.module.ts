@@ -1,3 +1,4 @@
+import { WishlistComponent } from './pages/Homepage/wishlist/wishlist.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { RegisterComponent } from './pages/register/register.component';
 import { NgModule,  } from '@angular/core';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'register' , component:RegisterComponent},
   { path:'shopping-cart', component:ShoppingCartComponent},
   { path:'shop' , component:ShopmainComponent},
+  { path:'wishlist', component:WishlistComponent},
   { path:'shop/:id' , component:ShopmainComponent},
   { path:'product-detail/:id', component:ProductDetailComponent},
 

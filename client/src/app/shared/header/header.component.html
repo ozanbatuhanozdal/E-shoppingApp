@@ -21,7 +21,8 @@
           </div>
           </ul>
           <ul class="navbar-nav ml-auto">               
-            <li class="nav-item"><a class="nav-link" href="/shopping-cart"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-dark"></small></a></li>           
+            <li class="nav-item"><a class="nav-link" href="/shopping-cart"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-dark"></small></a></li>
+            <li class="nav-item"><a class="nav-link" href="/wishlist"> <i class="far fa-heart mr-1"></i><small class="text-gray"></small></a></li>
           </ul>
           <div class="dropdown" *ngIf="(authService.currentUser$ | async) === null"  dropdown>
             <a  class="dropdown-toggle text-dark" dropdownToggle>Login</a>

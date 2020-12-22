@@ -39,6 +39,7 @@ import { UsersAdminComponent } from './pages/Admin/users-admin/users-admin.compo
 import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.component';
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { StrengthPasswordComponent } from './pages/register/strength-password/strength-password.component';
+import { WishlistComponent } from './pages/Homepage/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { StrengthPasswordComponent } from './pages/register/strength-password/st
     OrderAdminComponent,
     UserOrderComponent,
     StrengthPasswordComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

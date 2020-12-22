@@ -24,7 +24,8 @@
               <app-quantity-input [header]="'Quantity'" (valueChanged)="quantityOnChange($event)"></app-quantity-input>
             </div>
             <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"  (click)="addToCart()">Add to cart</a></div>
-          </div>  <div class="p-4 p-lg-5 bg-white">
+          </div> <a class="btn btn-link text-dark p-0" (click)="addToWishlist()" >Add to wish list</a>
+           <div class="p-4 p-lg-5 bg-white">
             <h6 class="text-uppercase">Product description </h6>
             <p class="text-muted text-small mb-0">{{Product.productExplanation}}</p>
           </div>

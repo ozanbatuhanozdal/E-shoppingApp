@@ -1,8 +1,8 @@
 import { ShoppingCartItem } from './../Models/ShoppingCartItem';
 import { Injectable } from '@angular/core';
-
+import {WishlistItem} from './../Models/WishlistItem';
 const SHOPPING_CART_KEY = 'shopping-cart-data';
-const ORDER_INFO_KEY = 'order-info';
+const WİSHLİST_CART_KEY = 'wishlist-data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,11 @@ const ORDER_INFO_KEY = 'order-info';
 export class ShoppingCartService {
 
   shoppingCartData: ShoppingCartItem[] = [];
+  wishlistData: WishlistItem[]  =[]
 
   constructor() { 
     this.loadShoppingCart();
+    this.loadWishlistCart();
   }
 
   private setLocalStorage(key: string, value: any) {
@@ -47,7 +49,6 @@ export class ShoppingCartService {
     this.setLocalStorage(SHOPPING_CART_KEY, this.shoppingCartData);   
   }
 
-
   private loadShoppingCart() {
     if (this.getLocalStorage(SHOPPING_CART_KEY)) {
       this.shoppingCartData = this.getLocalStorage(SHOPPING_CART_KEY);
@@ -55,6 +56,7 @@ export class ShoppingCartService {
     console.log('SC Data from LocalStorage', this.shoppingCartData);
   }
 
+ 
 
   editShoppingCartItem(item: ShoppingCartItem) {
     this.shoppingCartData = this.shoppingCartData.map((data: ShoppingCartItem) => {
@@ -74,5 +76,46 @@ export class ShoppingCartService {
     console.log('item removed:', this.shoppingCartData);
     this.setLocalStorage(SHOPPING_CART_KEY, this.shoppingCartData);   
   }
+
+  addWishlistItem(item: WishlistItem) {
+    if (
+      this.wishlistData.find(data => {
+        return data.product.productId === item.product.productId;
+      })
+    ) {
+    } else {
+      this.wishlistData = [...this.shoppingCartData, item];
+    }
+    console.log('item added:', this.wishlistData);
+    this.setLocalStorage(WİSHLİST_CART_KEY, this.wishlistData);   
+  }
+
+  
+  editWishlistItem(item: WishlistItem) {
+    this.wishlistData = this.wishlistData.map((data: WishlistItem) => {
+      if (data.product.productId === item.product.productId) {
+        data = Object.assign({}, data, item);
+      }
+      return data;
+    });
+    console.log('item edited:', this.wishlistData);
+    this.setLocalStorage(WİSHLİST_CART_KEY, this.wishlistData);
+  }
+
+  deleteWishlistItem(item: WishlistItem) {
+    this.wishlistData = this.wishlistData.filter(
+      data => !(data.product.productId === item.product.productId)
+    );
+    console.log('item removed:', this.wishlistData);
+    this.setLocalStorage(WİSHLİST_CART_KEY, this.wishlistData);   
+  }
+
+
+  private loadWishlistCart(){
+    if (this.getLocalStorage(WİSHLİST_CART_KEY)) {
+      this.wishlistData = this.getLocalStorage(WİSHLİST_CART_KEY);
+    }
+    console.log('SC Data from LocalStorage', this.wishlistData);
+  }  
 
 }

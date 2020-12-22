@@ -4,6 +4,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProductService {
   product: Product[];
   baseUrl = environment.apiUrl
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private toastr : ToastrService,) { }
 
 
   getProducts()
@@ -37,8 +38,7 @@ export class ProductService {
   {
     console.log(model);
     return this.http.post(this.baseUrl + 'Product/',model).pipe(
-      map((product: Product) => {
-        console.log(product);
+      map((product: Product) => {       
       })
     );
   }
@@ -47,7 +47,6 @@ export class ProductService {
   {
     return this.http.delete(this.baseUrl + 'Product/' +id).pipe(
       map((product: Product) => {
-        console.log(product);
       })
     );
   }
