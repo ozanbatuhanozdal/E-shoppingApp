@@ -27,7 +27,7 @@ export class ProductAdminCreateComponent implements OnInit {
 
 
   addProduct(files)
-  { 
+  {
     for (let file of files){
     console.log(file.path)
     this.model.productImageUrl=file.name
@@ -51,12 +51,12 @@ export class ProductAdminCreateComponent implements OnInit {
   }
 
   getCategories()
-  {   
+  {
       this.categoryService.getCategories().subscribe( categorys => {
         console.log(categorys);
-        this.categories = categorys;        
-        
-      }) 
+        this.categories = categorys;
+
+      })
   }
 
   upload(files) {
@@ -66,7 +66,15 @@ export class ProductAdminCreateComponent implements OnInit {
     const formData = new FormData();
 
     for (let file of files)
+    {
       formData.append(file.name, file);
+      let size = file.size;
+      if(size<3145728)
+      {
+        return this.toastr.error("image size is too high");
+      }
+      console.log(size);
+    }
 
     const uploadReq = new HttpRequest('POST', `https://localhost:5001/api/Product/UploadFile`, formData, {
       reportProgress: true,

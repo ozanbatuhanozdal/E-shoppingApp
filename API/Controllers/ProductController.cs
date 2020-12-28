@@ -12,17 +12,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
-{    
+{
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : BaseApiController
     {
 
         private readonly IProductRepository _ProductRepository;
-        private readonly ICategoryRepository _categoryRepository;  
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductRepository productRepository,ICategoryRepository categoryRepository, IMapper mapper)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper)
         {
             _ProductRepository = productRepository;
             _mapper = mapper;
@@ -35,13 +35,13 @@ namespace API.Controllers
         public async Task<IActionResult> GetAll()
         {
             var products = await _ProductRepository.GetAllASync();
-            var categorys = await  _categoryRepository.GetAllASync();
+            var categorys = await _categoryRepository.GetAllASync();
 
-            foreach(Product product in products)
+            foreach (Product product in products)
             {
-                foreach(Category category in categorys)
+                foreach (Category category in categorys)
                 {
-                    if(product.CategoryId == category.CategoryId)
+                    if (product.CategoryId == category.CategoryId)
                     {
                         product.category = category;
                     }
@@ -64,8 +64,8 @@ namespace API.Controllers
         [HttpGet("[action]/{id}")]
         public async Task<IActionResult> GetProductsByCategoryId(int id)
         {
-            
-            List<Product> Products = await _ProductRepository.GetAllASync(x=> x.CategoryId == id);
+
+            List<Product> Products = await _ProductRepository.GetAllASync(x => x.CategoryId == id);
             if (Products.Count == 0)
             {
                 return BadRequest("İd' parameter cant found");
@@ -84,16 +84,21 @@ namespace API.Controllers
 
             Product addProduct = _mapper.Map<Product>(productAddDto);
             string webRootPath = "assets/img/" + addProduct.ProductImageUrl;
-            addProduct.ProductImageUrl = webRootPath;
-            if (await _ProductRepository.AddAsync(addProduct))
+            string extension = Path.GetExtension(webRootPath);
+            if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
             {
-                return Ok(addProduct);
-            }
-            else
-            {
-                return BadRequest("Product Can't Added");
+                addProduct.ProductImageUrl = webRootPath;
+                if (await _ProductRepository.AddAsync(addProduct))
+                {
+                    return Ok(addProduct);
+                }
+                else
+                {
+                    return BadRequest("Product Can't Added");
 
+                }
             }
+            return BadRequest("Product Image Type is wrong");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
@@ -114,18 +119,18 @@ namespace API.Controllers
         {
             Product updatedCategory = await _ProductRepository.FindByIdAsync(productUpdateDto.ProductId);
 
-            if(updatedCategory == null)
+            if (updatedCategory == null)
             {
                 return BadRequest("Can't Updated");
             }
             else
             {
-           
-            updatedCategory = _mapper.Map<Product>(productUpdateDto);
 
-            await _ProductRepository.UpdateAsync(updatedCategory);
+                updatedCategory = _mapper.Map<Product>(productUpdateDto);
 
-            return Ok(updatedCategory);
+                await _ProductRepository.UpdateAsync(updatedCategory);
+
+                return Ok(updatedCategory);
 
             }
         }
