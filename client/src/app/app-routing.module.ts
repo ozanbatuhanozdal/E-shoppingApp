@@ -19,6 +19,8 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import {UsersAdminComponent} from './pages/Admin/users-admin/users-admin.component';
 import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.component';
 import { UserOrderComponent } from './pages/user-order/user-order.component';
+import { ForgotPasswordComponent } from './pages/passwordreset/forgot-password/forgot-password.component';
+import { ChangepasswordComponent } from './pages/passwordreset/changepassword/changepassword.component';
 
 const routes: Routes = [
   
@@ -48,6 +50,9 @@ const routes: Routes = [
 
   // Admin Order
   { path:'Admin/Order' , component: OrderAdminComponent},
+  // Change Password
+  { path:'forgetpassword' , component:ForgotPasswordComponent},
+  { path:'ChangePassword/:id', component: ChangepasswordComponent},
 
   { path: '**' , component:HomeComponent, pathMatch: 'full'}
   

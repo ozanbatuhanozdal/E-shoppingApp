@@ -33,6 +33,8 @@ namespace API.Models
         [Required]
         public string Address {get;set;}
 
+        public string Guid { get; set; }
+
         public int IsAdmin{get;set;}
     }
 }

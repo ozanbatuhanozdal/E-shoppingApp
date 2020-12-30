@@ -68,11 +68,7 @@ export class ProductAdminCreateComponent implements OnInit {
     for (let file of files)
     {
       formData.append(file.name, file);
-      let size = file.size;
-      if(size<3145728)
-      {
-        return this.toastr.error("image size is too high");
-      }
+      let size = file.size;      
       console.log(size);
     }
 

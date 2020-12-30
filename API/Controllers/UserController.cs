@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,13 @@ namespace API.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
-        public UserController(IUserRepository userRepository, IMapper mapper,ITokenService tokenService)
+        private readonly IEmailSender _emailSender;
+        public UserController(IUserRepository userRepository, IMapper mapper,ITokenService tokenService,IEmailSender emailSender)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _tokenService = tokenService;
+            _emailSender = emailSender;
 
         }
 
@@ -108,10 +111,15 @@ namespace API.Controllers
             }
             else
             {
+                using var hmac = new HMACSHA512();
+                var addUser = _mapper.Map<User>(userUpdateDto);
 
+
+                updateUser = _mapper.Map<User>(userUpdateDto);
+
+                updateUser.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(userUpdateDto.Password));
+                updateUser.PasswordSalt = hmac.Key;
             
-            updateUser = _mapper.Map<User>(userUpdateDto);
-                
             await _userRepository.UpdateAsync(updateUser);
 
             return Ok(updateUser);
@@ -147,6 +155,43 @@ namespace API.Controllers
             }
 
 
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult ForgotPassword(UserForgotPasswordDto userForgotPasswordDto)
+        {
+            if(!UserExist(userForgotPasswordDto.email))
+            {
+                User user = _userRepository.Find(x => x.Email == userForgotPasswordDto.email);
+                user.Guid = Guid.NewGuid().ToString();
+                _userRepository.UpdateAsync(user);
+                _emailSender.SendEmail(user.Email, user.Guid);
+                return Ok(userForgotPasswordDto.email);
+            }
+            else
+            {
+                return  BadRequest("Email cannot find");
+            }
+        }        
+        [HttpGet("[action]/{id}")]
+        public IActionResult GetUserWithGuid(string id)
+        {
+          
+            User user = _userRepository.Find(x => x.Guid == id);
+            if(user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return BadRequest("Cannot Find");
+            }
+          
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return Ok();
         }
 
 

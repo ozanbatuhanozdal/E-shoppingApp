@@ -16,4 +16,6 @@ export class UsersService {
   getUsers() {
     return this.http.get<Member[]>(this.baseUrl + 'User/GetAll')
   }
+
+ 
 }

@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit {
       $event.returnValue = true
     }
   }
+  
   constructor(private membersService: MembersService,private route: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {

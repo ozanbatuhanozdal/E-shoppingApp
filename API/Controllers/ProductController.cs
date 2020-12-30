@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Data.Repository.Interfaces;
 using API.Dtos.ProductDtos;
 using API.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -25,10 +22,8 @@ namespace API.Controllers
         public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IMapper mapper)
         {
             _ProductRepository = productRepository;
-            _mapper = mapper;
-
             _categoryRepository = categoryRepository;
-
+            _mapper = mapper;
         }
 
         [HttpGet("[action]")]
@@ -81,7 +76,6 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(ProductAddDto productAddDto)
         {
-
             Product addProduct = _mapper.Map<Product>(productAddDto);
             string webRootPath = "assets/img/" + addProduct.ProductImageUrl;
             string extension = Path.GetExtension(webRootPath);
@@ -100,6 +94,7 @@ namespace API.Controllers
             }
             return BadRequest("Product Image Type is wrong");
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
@@ -142,7 +137,7 @@ namespace API.Controllers
             {
                 var file = Request.Form.Files[0];
                 string folderName = "img";
-                string webRootPath = "D:/E-shoppingApp/YZM-4215---GRUP17/client/src/assets/";
+                string webRootPath = "C:/Users/ozanb/Desktop/YZM-4215---GRUP17/client/src/assets/";
                 string newPath = Path.Combine(webRootPath, folderName);
                 if (!Directory.Exists(newPath))
                 {

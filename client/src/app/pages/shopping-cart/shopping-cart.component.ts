@@ -56,5 +56,22 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
+
+  onMinus(data:any) {
+    data.quantity--;
+    this.updateItem(data);
+    this.getOrderSummary();
+  }
+
+  onPlus(data:any) {
+    console.log(data);
+    data.quantity++;
+    this.updateItem(data);
+    this.getOrderSummary();
+  }
+
+
+  
+
 }
 

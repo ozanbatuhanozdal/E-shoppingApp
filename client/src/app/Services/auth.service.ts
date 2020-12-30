@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
+import { Member } from '../Models/member';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,8 @@ export class AuthService {
   baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
+
+  member: Member;
 
   constructor(private Http: HttpClient) { }
 
@@ -44,6 +47,15 @@ export class AuthService {
       })
     );
   }
+
+  ForgotPassword(model:any)
+  {
+    console.log("postgeldi");
+    console.log(model);
+    return this.Http.post(this.baseUrl + 'User/ForgotPassword',model)
+  }
+
+
 
 
   setCurrentUser(user:User)

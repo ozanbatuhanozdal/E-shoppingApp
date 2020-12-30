@@ -40,6 +40,8 @@ import { OrderAdminComponent } from './pages/Admin/order-admin/order-admin.compo
 import { UserOrderComponent } from './pages/user-order/user-order.component';
 import { StrengthPasswordComponent } from './pages/register/strength-password/strength-password.component';
 import { WishlistComponent } from './pages/Homepage/wishlist/wishlist.component';
+import { ForgotPasswordComponent } from './pages/passwordreset/forgot-password/forgot-password.component';
+import { ChangepasswordComponent } from './pages/passwordreset/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { WishlistComponent } from './pages/Homepage/wishlist/wishlist.component'
     UserOrderComponent,
     StrengthPasswordComponent,
     WishlistComponent,
+    ForgotPasswordComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,

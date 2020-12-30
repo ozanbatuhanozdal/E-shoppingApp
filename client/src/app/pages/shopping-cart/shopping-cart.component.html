@@ -37,7 +37,11 @@
                     <p class="mb-0 small">{{item.product.productPrice}}</p>
                   </td>
                   <td class="align-middle border-0">
-                    <p class="mb-0 small">{{item.quantity}}</p>
+                 <p class="mb-0 small">
+                  <button class="btn btn-link" [disabled]="item.quantity === 1" (click)="onMinus(item)" ><i class="fas fa-caret-left" ></i></button> 
+                  {{item.quantity}}
+                  <button class="btn btn-link" (click)="onPlus(item)"><i class="fas fa-caret-right"></i></button>
+                </p>
                   </td>
                   <td class="align-middle border-0">
                     <p class="mb-0 small">${{getTotalPrice(item)}}</p>

@@ -19,7 +19,8 @@ namespace API.Containers
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            
+            services.AddScoped<IEmailSender, EmailSender>();
+
             services.AddScoped<ITokenService, TokenService>();
         }
         

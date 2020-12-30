@@ -19,10 +19,15 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'user/' +  id)
   }
 
+  GetUserWithGuid(id:string){
+    return this.http.get<Member>(this.baseUrl + 'User/GetUserWithGuid/' + id) 
+    
+  }
+
 
   updateMember(member: Member)
   {
-    return this.http.put(this.baseUrl + 'user',member);
+    return this.http.put(this.baseUrl + 'User/UpdateUser',member);
   }
   
 }

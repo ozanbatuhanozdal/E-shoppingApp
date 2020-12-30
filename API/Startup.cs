@@ -1,4 +1,7 @@
 using API.Containers;
+using API.Services;
+using API.Services.Concrete;
+using API.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -25,8 +28,7 @@ namespace API
         {
             
             services.AddDependencies();
-            
-
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddCors();
@@ -43,6 +45,12 @@ namespace API
                         
                     };
                 });
+
+
+            var emailConfig = Configuration
+      .GetSection("EmailConfiguration")
+      .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
 
             services.AddControllers().AddNewtonsoftJson(opt =>
             {
