@@ -8,5 +8,4 @@ export interface Product{
     productExplanation: string,
     categoryId: number,
     category: Category,
-
 }

@@ -10,6 +10,7 @@ namespace API.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int OrderCategory { get; set; }
+        public string CategoryDescription { get; set; }
         public virtual List<Product> Products { get; set; }
         
     }

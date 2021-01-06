@@ -12,5 +12,6 @@ namespace API.Dtos.CategoryDtos
         public string CategoryName { get; set; }
         
         public int OrderCategory { get; set; }
+        public string CategoryDescription { get; set; }
     }
 }

@@ -32,6 +32,9 @@ namespace API.Migrations
                     b.Property<int>("OrderCategory")
                         .HasColumnType("int");
 
+                    b.Property<string>("CategoryDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");

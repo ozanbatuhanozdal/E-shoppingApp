@@ -15,7 +15,8 @@ namespace API.Migrations
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(nullable: true),
-                    OrderCategory = table.Column<int>(nullable: false)
+                    OrderCategory = table.Column<int>(nullable: false),
+                    CategoryDescription = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

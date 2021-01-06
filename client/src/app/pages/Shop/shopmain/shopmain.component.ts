@@ -24,6 +24,7 @@ export class ShopmainComponent implements OnInit {
 
   Categories: Category[];
   Products: Product[];
+  Category:Category;
   id: string;
   public ImgUrl = ' ';
 
@@ -33,13 +34,11 @@ export class ShopmainComponent implements OnInit {
     if(this.id == null)
     {
       this.getProducts()
-
     }
     else {
       this.getProductsByCategoryId(this.id)
     }
     this.getCategories()
-
   }
 
   getCategories()
@@ -71,7 +70,9 @@ export class ShopmainComponent implements OnInit {
     this.productService.getProductByCategoryId(id).subscribe( product => {
       console.log(product);
       this.Products = product;
-      
+    })
+    this.categoryService.getCategory(id).subscribe(category => {
+      this.Category = category;
     })
   }
  

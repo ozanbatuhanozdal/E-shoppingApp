@@ -62,6 +62,7 @@ export class ProductAdminIndexComponent implements OnInit {
 
 
   deleteProduct(id: number) {
+    if (confirm("Ürünü silmek istediğinize emin misiniz?")) {
     this.productService.deleteProduct(id).subscribe(response => {
       console.log(response);
       this.toastr.success("Product Removed");
@@ -73,5 +74,5 @@ export class ProductAdminIndexComponent implements OnInit {
       this.toastr.error(error.error);
     })
   }
-
+  }
 }

@@ -14,50 +14,47 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryAdminIndexComponent implements OnInit {
 
-  id:string;
+  id: string;
   Products: Product[];
   categories: Category[];
- 
-  constructor(private toastr : ToastrService,private http: HttpClient,private productService: ProductService,private categoryService:CategoryService,private router:Router) { }
-  
+
+  constructor(private toastr: ToastrService, private http: HttpClient, private productService: ProductService, private categoryService: CategoryService, private router: Router) { }
+
   ngOnInit() {
 
     this.getCategories();
   }
 
 
-  getProducts()
-  {   
-    this.productService.getProducts().subscribe( products => {
+  getProducts() {
+    this.productService.getProducts().subscribe(products => {
       console.log(products);
       this.Products = products;
-      
+
     })
 
   }
 
-  getCategories()
-  {
-      this.categoryService.getCategories().subscribe( categorys => {
-        console.log(categorys);
-        this.categories = categorys;                
+  getCategories() {
+    this.categoryService.getCategories().subscribe(categorys => {
+      console.log(categorys);
+      this.categories = categorys;
+    })
+
+  }
+
+  deleteCategory(id: number) {
+    if (confirm("Kategoriyi silmek istediğinize emin misiniz? Kategoriye ait tüm ürünler silinecek")) {
+      this.categoryService.deleteCategory(id).subscribe(response => {
+        console.log(response);
+        this.toastr.success("Category Removed");
+        setTimeout(function () {
+          window.location.reload()
+        }.bind(this), 2000);
+      }, error => {
+        console.log(error);
+        this.toastr.error(error.error);
       })
- 
+    }
   }
-
-  deleteCategory(id:number)
-  {
-    this.categoryService.deleteCategory(id).subscribe(response => {
-      console.log(response);
-      this.toastr.success("Category Removed");
-      setTimeout(function () {
-        window.location.reload()
-      }.bind(this), 2000);
-    },error => { 
-      console.log(error);
-      this.toastr.error(error.error);
-    })
-  }
-
-  
 }
